@@ -12,16 +12,10 @@ export class Usuario {
   senha: string;
 
   @Column()
-  cfn: string;
-
-  @Column()
   email: string;
 
   @Column()
   telefone: string;
-
-  @Column()
-  datanascimento: Date;
 
   @Column()
   tipousuario: string;
