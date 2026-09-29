@@ -1,6 +1,5 @@
 import { Injectable, UnauthorizedException } from '@nestjs/common';
-import { UsuarioService } from '../usuario/usuario.service.js';
-import { UsuarioController } from '../usuario/usuario.controller.js';
+import { UsuarioService } from '../models/usuario/usuario.service.js';
 
 @Injectable()
 export class AuthService {
