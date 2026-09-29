@@ -4,6 +4,7 @@ import { AppService } from './app.service.js';
 import { UsuarioModule } from './usuario/usuario.module.js';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthModule } from './auth/auth.module.js';
+import { PacienteModule } from './models/paciente/paciente.module.js';
 
 
 @Module({
@@ -19,7 +20,8 @@ import { AuthModule } from './auth/auth.module.js';
       synchronize: false,
     }),
     UsuarioModule,
-    AuthModule],
+    AuthModule,
+    PacienteModule],
   controllers: [AppController],
   providers: [AppService],
 })
