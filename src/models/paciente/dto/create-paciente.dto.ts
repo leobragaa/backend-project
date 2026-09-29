@@ -1,4 +1,4 @@
-import { IsDate, IsNotEmpty, IsOptional, IsString, Min } from 'class-validator';
+import { IsDate, IsNotEmpty, IsOptional, IsString, Max } from 'class-validator';
 
 export class CreatePacienteDto {
   @IsString()
@@ -9,7 +9,6 @@ export class CreatePacienteDto {
 
   @IsString()
   @IsNotEmpty()
-  @Min(1)
   senha: string;
 
   @IsString()
@@ -32,7 +31,7 @@ export class CreatePacienteDto {
   cidade: string;
 
   @IsString()
-  @Min(2)
+  @Max(2)
   estado: string;
 
   @IsString()

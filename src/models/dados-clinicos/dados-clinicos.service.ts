@@ -1,19 +1,29 @@
 import { Injectable } from '@nestjs/common';
-import { CreateDadosClinicoDto } from './dto/create-dados-clinico.dto';
-import { UpdateDadosClinicoDto } from './dto/update-dados-clinico.dto';
+import { CreateDadosClinicoDto } from './dto/create-dados-clinico.dto.js';
+import { UpdateDadosClinicoDto } from './dto/update-dados-clinico.dto.js';
+import { InjectRepository } from '@nestjs/typeorm';
+import { DadosClinico } from './entities/dados-clinico.entity.js';
+import { Repository } from 'typeorm';
 
 @Injectable()
 export class DadosClinicosService {
-  create(createDadosClinicoDto: CreateDadosClinicoDto) {
-    return 'This action adds a new dadosClinico';
+  constructor(
+    @InjectRepository(DadosClinico)
+    private readonly dadosclinicosRepositorio: Repository<DadosClinico>,
+  ) {}
+
+  create(dadosClinicoDTO: CreateDadosClinicoDto) {
+    const dadosclinicos = this.dadosclinicosRepositorio.create(dadosClinicoDTO);
+
+    return this.dadosclinicosRepositorio.save(dadosclinicos);
   }
 
   findAll() {
-    return `This action returns all dadosClinicos`;
+    return this.dadosclinicosRepositorio.find();
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} dadosClinico`;
+    return this.dadosclinicosRepositorio.findOne({ where: { id } });
   }
 
   update(id: number, updateDadosClinicoDto: UpdateDadosClinicoDto) {

@@ -1,7 +1,15 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
-import { DadosClinicosService } from './dados-clinicos.service';
-import { CreateDadosClinicoDto } from './dto/create-dados-clinico.dto';
-import { UpdateDadosClinicoDto } from './dto/update-dados-clinico.dto';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
+import { DadosClinicosService } from './dados-clinicos.service.js';
+import { CreateDadosClinicoDto } from './dto/create-dados-clinico.dto.js';
+import { UpdateDadosClinicoDto } from './dto/update-dados-clinico.dto.js';
 
 @Controller('dados-clinicos')
 export class DadosClinicosController {
@@ -23,7 +31,10 @@ export class DadosClinicosController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateDadosClinicoDto: UpdateDadosClinicoDto) {
+  update(
+    @Param('id') id: string,
+    @Body() updateDadosClinicoDto: UpdateDadosClinicoDto,
+  ) {
     return this.dadosClinicosService.update(+id, updateDadosClinicoDto);
   }
 
