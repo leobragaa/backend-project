@@ -1,7 +1,15 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
-import { PlanoAlimentarService } from './plano-alimentar.service';
-import { CreatePlanoAlimentarDto } from './dto/create-plano-alimentar.dto';
-import { UpdatePlanoAlimentarDto } from './dto/update-plano-alimentar.dto';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
+import { PlanoAlimentarService } from './plano-alimentar.service.js';
+import { CreatePlanoAlimentarDto } from './dto/create-plano-alimentar.dto.js';
+import { UpdatePlanoAlimentarDto } from './dto/update-plano-alimentar.dto.js';
 
 @Controller('plano-alimentar')
 export class PlanoAlimentarController {
@@ -23,7 +31,10 @@ export class PlanoAlimentarController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updatePlanoAlimentarDto: UpdatePlanoAlimentarDto) {
+  update(
+    @Param('id') id: string,
+    @Body() updatePlanoAlimentarDto: UpdatePlanoAlimentarDto,
+  ) {
     return this.planoAlimentarService.update(+id, updatePlanoAlimentarDto);
   }
 

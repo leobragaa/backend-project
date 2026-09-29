@@ -5,6 +5,8 @@ import { UsuarioModule } from './models/usuario/usuario.module.js';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthModule } from './auth/auth.module.js';
 import { PacienteModule } from './models/paciente/paciente.module.js';
+import { DadosClinicosModule } from './models/dados-clinicos/dados-clinicos.module.js';
+import { PlanoAlimentarModule } from './models/plano-alimentar/plano-alimentar.module.js';
 
 @Module({
   imports: [
@@ -21,6 +23,8 @@ import { PacienteModule } from './models/paciente/paciente.module.js';
     UsuarioModule,
     AuthModule,
     PacienteModule,
+    DadosClinicosModule,
+    PlanoAlimentarModule,
   ],
   controllers: [AppController],
   providers: [AppService],
