@@ -13,6 +13,9 @@ export class CreateUsuarioDto {
   senha: string;
 
   @IsString()
+  cpf: string;
+
+  @IsString()
   telefone: string;
 
   @IsString()
