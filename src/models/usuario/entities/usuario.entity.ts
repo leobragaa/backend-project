@@ -14,8 +14,8 @@ export class Usuario {
   @Column()
   email: string;
 
-  @Column()
-  cpf: string;
+  // @Column()
+  // cpf: string;
 
   @Column()
   telefone: string;

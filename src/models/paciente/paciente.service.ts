@@ -21,6 +21,7 @@ export class PacienteService {
   findCPF(cpf: string) {
     return this.pacienteRepositorio.findOne({ where: { cpf } });
   }
+
   findAll() {
     return this.pacienteRepositorio.find();
   }
@@ -30,7 +31,7 @@ export class PacienteService {
   }
 
   update(id: number, updatePacienteDto: UpdatePacienteDto) {
-    return this.pacienteRepositorio.update;
+    return this.pacienteRepositorio.update(+id, updatePacienteDto);
   }
 
   remove(id: number) {

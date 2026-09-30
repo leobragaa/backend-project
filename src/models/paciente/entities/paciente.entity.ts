@@ -1,5 +1,14 @@
-import { Column, PrimaryGeneratedColumn } from 'typeorm/browser';
+import {
+  Column,
+  Entity,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm/browser';
+import { PlanoAlimentar } from '../../plano-alimentar/entities/plano-alimentar.entity.js';
+import { Usuario } from '../../usuario/entities/usuario.entity.js';
 
+@Entity('paciente')
 export class Paciente {
   @PrimaryGeneratedColumn()
   id: number;
@@ -39,4 +48,10 @@ export class Paciente {
 
   @Column()
   cep: string;
+
+  @OneToMany(() => PlanoAlimentar, (planoalimentar) => planoalimentar.id)
+  planoalimentar: PlanoAlimentar;
+
+  @ManyToOne(() => Usuario, (usuario) => usuario.id)
+  usuario: '1';
 }

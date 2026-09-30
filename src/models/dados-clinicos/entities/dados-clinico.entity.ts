@@ -1,5 +1,6 @@
-import { Column, PrimaryGeneratedColumn } from 'typeorm';
-
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Paciente } from '../../paciente/entities/paciente.entity.js';
+@Entity('dadosclinicos')
 export class DadosClinico {
   @PrimaryGeneratedColumn()
   id: number;
@@ -24,4 +25,7 @@ export class DadosClinico {
 
   @Column()
   dataregistro: Date;
+
+  @ManyToOne(() => Paciente, (paciente) => paciente.id)
+  paciente: Paciente;
 }
