@@ -20,16 +20,11 @@ export class PlanoAlimentar {
   @Column()
   descalimentacao: string;
 
-  @JoinTable()
-  @ManyToOne(
-    () => Paciente,
-    (planoalimentar_paciente_fk) => planoalimentar_paciente_fk.id,
-  )
-  planoalimentar_paciente_fk: '1';
+  @ManyToOne(() => Paciente, (paciente_id) => paciente_id.planoalimentar)
+  @JoinTable({ name: 'paciente_id' })
+  paciente_id: Paciente[];
 
-  @ManyToOne(
-    () => Usuario,
-    (planoalimentar_usuario_fk) => planoalimentar_usuario_fk.id,
-  )
-  planoalimentar_usuario_fk: '1';
+  @ManyToOne(() => Usuario, (usuario) => usuario.id)
+  @JoinTable({ name: 'usuario_id' })
+  usuario: Usuario[];
 }
