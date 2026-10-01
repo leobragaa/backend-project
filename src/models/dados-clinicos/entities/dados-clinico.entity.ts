@@ -1,4 +1,10 @@
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 import { Paciente } from '../../paciente/entities/paciente.entity.js';
 @Entity('dadosclinicos')
 export class DadosClinico {
@@ -26,6 +32,7 @@ export class DadosClinico {
   @Column()
   dataregistro: Date;
 
-  @ManyToOne(() => Paciente, (paciente) => paciente.id)
-  paciente: Paciente;
+  @ManyToOne(() => Paciente, (paciente_id) => paciente_id.id)
+  @JoinColumn({ name: 'paciente_id', referencedColumnName: 'id' })
+  paciente_id: Paciente[];
 }

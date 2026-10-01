@@ -1,6 +1,7 @@
 import {
   Column,
   Entity,
+  JoinColumn,
   JoinTable,
   ManyToOne,
   OneToMany,
@@ -54,10 +55,10 @@ export class Paciente {
     () => PlanoAlimentar,
     (planoalimentar) => planoalimentar.paciente_id,
   )
-  @JoinTable({ name: 'planoalimetar' })
+  @JoinColumn({ name: 'paciente_id', referencedColumnName: 'paciente_id' })
   planoalimentar: PlanoAlimentar;
 
-  @ManyToOne(() => Usuario, (usuario) => usuario.id)
-  @JoinTable({ name: 'usuario' })
-  usuario: Usuario[];
+  @ManyToOne(() => Usuario, (usuario_id) => usuario_id.id)
+  @JoinColumn({ name: 'usuario_id', referencedColumnName: 'id' })
+  usuario_id: Usuario[];
 }

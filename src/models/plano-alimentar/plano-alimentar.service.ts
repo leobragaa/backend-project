@@ -20,11 +20,11 @@ export class PlanoAlimentarService {
   }
 
   findAll() {
-    return `This action returns all planoAlimentar`;
+    return this.planoAlimentarDTO.find();
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} planoAlimentar`;
+    return this.planoAlimentarDTO.findOne({ where: { id } });
   }
 
   update(id: number, updatePlanoAlimentarDto: UpdatePlanoAlimentarDto) {

@@ -1,4 +1,12 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { Paciente } from '../../paciente/entities/paciente.entity.js';
+import { PlanoAlimentar } from '../../plano-alimentar/entities/plano-alimentar.entity.js';
 
 @Entity('usuario', { schema: 'public', name: 'usuario' })
 export class Usuario {
@@ -22,4 +30,15 @@ export class Usuario {
 
   @Column()
   tipousuario: string;
+
+  @OneToMany(() => Paciente, (paciente) => paciente.id)
+  @JoinColumn({ name: 'id', referencedColumnName: 'paciente_id' })
+  paciente: Paciente;
+
+  @OneToMany(
+    () => PlanoAlimentar,
+    (planoAlimentar) => planoAlimentar.usuario_id,
+  )
+  @JoinColumn({ name: 'id', referencedColumnName: 'usuario_id' })
+  planoAlimentar: PlanoAlimentar;
 }
