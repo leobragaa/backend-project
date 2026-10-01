@@ -1,6 +1,7 @@
 import {
   Column,
   Entity,
+  JoinTable,
   ManyToOne,
   OneToMany,
   PrimaryGeneratedColumn,
@@ -49,9 +50,14 @@ export class Paciente {
   @Column()
   cep: string;
 
-  @OneToMany(() => PlanoAlimentar, (planoalimentar) => planoalimentar.id)
+  @OneToMany(
+    () => PlanoAlimentar,
+    (planoalimentar) => planoalimentar.paciente_id,
+  )
+  @JoinTable({ name: 'planoalimetar' })
   planoalimentar: PlanoAlimentar;
 
   @ManyToOne(() => Usuario, (usuario) => usuario.id)
-  usuario: '1';
+  @JoinTable({ name: 'usuario' })
+  usuario: Usuario[];
 }
