@@ -32,6 +32,11 @@ export class UsuarioController {
     return this.usuarioService.findOne(+id);
   }
 
+  // @Get('paciente_id')
+  // findPaciente() {
+  //   return this.usuarioService.findAll();
+  // }
+
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateUsuarioDto: UpdateUsuarioDto) {
     return this.usuarioService.update(+id, updateUsuarioDto);
