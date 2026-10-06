@@ -32,6 +32,7 @@
     "@nestjs/websockets": "^12.1.2",
     "class-validator": "^0.15.1",
     "mysql2": "^3.24.4",
+    "nodemailer": "^10.0.15",
     "pg": "^8.23.0",
     "postgres": "^3.4.9",
     "reflect-metadata": "^0.2.2",

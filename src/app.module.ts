@@ -9,6 +9,7 @@ import { DadosClinicosModule } from './models/dados-clinicos/dados-clinicos.modu
 import { PlanoAlimentarModule } from './models/plano-alimentar/plano-alimentar.module.js';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { config } from 'process';
+import { SendEmailByPacienteModule } from './models/send-email-by-paciente/send-email-by-paciente.module.js';
 
 @Module({
   imports: [
@@ -18,11 +19,11 @@ import { config } from 'process';
       inject: [ConfigService],
       useFactory: (configService: ConfigService) => ({
         type: 'postgres',
-        host: configService.get('DB_HOST'),
-        port: configService.get('DB_PORT'),
-        username: configService.get('DB_USER'),
-        password: configService.get('DB_PASSWORD'),
-        database: configService.get('DB_DATABASE'),
+        host: configService.get<string>('DB_HOST'),
+        port: configService.get<number>('DB_PORT'),
+        username: configService.get<string>('DB_USER'),
+        password: configService.get<string>('DB_PASSWORD'),
+        database: configService.get<string>('DB_DATABASE'),
         autoLoadEntities: true,
         synchronize: false,
       }),
@@ -32,6 +33,7 @@ import { config } from 'process';
     PacienteModule,
     DadosClinicosModule,
     PlanoAlimentarModule,
+    SendEmailByPacienteModule,
   ],
   controllers: [AppController],
   providers: [AppService],
