@@ -1,10 +1,4 @@
-import {
-  BadRequestException,
-  Body,
-  Controller,
-  Get,
-  Post,
-} from '@nestjs/common';
+import { BadRequestException, Body, Controller, Post } from '@nestjs/common';
 import { AuthService } from './auth.service.js';
 
 @Controller('auth')
@@ -16,7 +10,11 @@ export class AuthController {
     console.log(credenciais);
 
     if (credenciais) {
-      return this.authService.signIn(credenciais.email, credenciais.senha);
+      return this.authService.signIn(
+        credenciais.email,
+        credenciais.senha,
+        credenciais.tipousuario,
+      );
     }
 
     throw new BadRequestException();
