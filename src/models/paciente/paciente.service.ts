@@ -22,12 +22,20 @@ export class PacienteService {
     return this.pacienteRepositorio.findOne({ where: { cpf } });
   }
 
-  findAll() {
+  findTipoUsuario(tipousuario: string) {
+    return this.pacienteRepositorio.findOne({ where: { tipousuario } });
+  }
+
+  findAll(): Promise<Array<Paciente>> {
     return this.pacienteRepositorio.find();
   }
 
   findOne(id: number) {
     return this.pacienteRepositorio.findOne({ where: { id } });
+  }
+
+  findPacienteEmail(email: string) {
+    return this.pacienteRepositorio.findOne({ where: { email } });
   }
 
   update(id: number, updatePacienteDto: UpdatePacienteDto) {
