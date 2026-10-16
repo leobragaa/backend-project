@@ -17,7 +17,15 @@ export class PacienteService {
 
     return this.pacienteRepositorio.save(paciente);
   }
-
+  async findByNutricionista(id_nutricionista: number) {
+    return this.pacienteRepositorio.find({
+      where: {
+        usuario_id: {
+          id: id_nutricionista,
+        },
+      },
+    });
+  }
   findCPF(cpf: string) {
     return this.pacienteRepositorio.findOne({ where: { cpf } });
   }

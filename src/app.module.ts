@@ -15,7 +15,7 @@ import { PlanoAlimentarModule } from './models/plano-alimentar/plano-alimentar.m
       host: 'localhost',
       port: 5432,
       username: 'postgres',
-      password: '1234',
+      password: 'L1oN@rdol97',
       database: 'postgres',
       autoLoadEntities: true,
       synchronize: false,

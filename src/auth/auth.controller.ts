@@ -11,6 +11,7 @@ export class AuthController {
 
     if (credenciais) {
       return this.authService.signIn(
+        credenciais.id,
         credenciais.email,
         credenciais.senha,
         credenciais.tipousuario,
