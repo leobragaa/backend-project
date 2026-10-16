@@ -10,6 +10,7 @@ export class AuthService {
   ) {}
 
   async signIn(
+    id: number,
     email: string,
     password: string,
     tipousuario: string,

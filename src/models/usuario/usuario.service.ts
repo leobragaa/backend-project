@@ -31,9 +31,19 @@ export class UsuarioService {
 
     return await this.usuarioRepositorio.save(usuario);
   }
-
+  async findNutricionista(id: number) {
+    return await this.usuarioRepositorio.findOne({
+      where: {
+        id: id,
+      },
+    });
+  }
   findAll(): Promise<Array<Usuario>> {
     return this.usuarioRepositorio.find();
+  }
+
+  findOneNutricionista(id: number) {
+    return this.usuarioRepositorio.findOne({ where: { id } });
   }
 
   findOne(id: number) {
