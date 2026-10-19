@@ -1,14 +1,14 @@
 import { Body, Controller, Post } from '@nestjs/common';
-import { EmailService } from './entities/email-service.entity.js';
 import { sendEmailDto } from './dto/send-email.dto.js';
+import { EmailServiceService } from './email-service.service.js';
 
 @Controller('email-service')
 export class EmailServiceController {
-  constructor(private readonly emailServiceService: EmailService) {}
+  constructor(private readonly emailServiceService: EmailServiceService) {}
 
   @Post('send')
   async sendEmailByPaciente(@Body() dto: sendEmailDto) {
-    await this.emailServiceService.sendEmailByPaciente(dto);
+    await this.emailServiceService.sendEmailUsers(dto);
     return { message: 'ENVIOU O EMAIL ALELUIA' };
   }
 }
