@@ -10,9 +10,8 @@ import { DadosClinicosModule } from './models/dados-clinicos/dados-clinicos.modu
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { config } from 'process';
 import { PlanoAlimentarModule } from './models/plano-alimentar/plano-alimentar.module.js';
-import { ConfigModule, ConfigService } from '@nestjs/config';
-import { config } from 'process';
 import { MessageConversationModule } from './models/message-conversation/message-conversation.module.js';
+import { EmailServiceModule } from './models/email-service/email-service.module.js';
 
 @Module({
   imports: [
@@ -37,6 +36,7 @@ import { MessageConversationModule } from './models/message-conversation/message
     DadosClinicosModule,
     PlanoAlimentarModule,
     MessageConversationModule,
+    EmailServiceModule,
   ],
   controllers: [AppController],
   providers: [AppService],
