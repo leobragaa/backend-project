@@ -4,17 +4,23 @@ import { UpdatePacienteDto } from './dto/update-paciente.dto.js';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Paciente } from './entities/paciente.entity.js';
 import { Repository } from 'typeorm';
+import { EmailService } from '../email-service/email-service.service.js';
 
 @Injectable()
 export class PacienteService {
   constructor(
     @InjectRepository(Paciente)
     private readonly pacienteRepositorio: Repository<Paciente>,
+    private readonly emailService: EmailService,
   ) {}
 
-  create(createPacienteDto: CreatePacienteDto) {
+  async create(createPacienteDto: CreatePacienteDto) {
     const paciente = this.pacienteRepositorio.create(createPacienteDto);
-
+    await this.emailService.sendEmailUsers(
+      paciente.nome,
+      paciente.email,
+      paciente.senha,
+    );
     return this.pacienteRepositorio.save(paciente);
   }
   async findByNutricionista(id_nutricionista: number) {
