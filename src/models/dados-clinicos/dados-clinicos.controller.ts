@@ -11,7 +11,7 @@ import { DadosClinicosService } from './dados-clinicos.service.js';
 import { CreateDadosClinicoDto } from './dto/create-dados-clinico.dto.js';
 import { UpdateDadosClinicoDto } from './dto/update-dados-clinico.dto.js';
 
-@Controller('dados-clinicos')
+@Controller('DADOSCLINICOS')
 export class DadosClinicosController {
   constructor(private readonly dadosClinicosService: DadosClinicosService) {}
 

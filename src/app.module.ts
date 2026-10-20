@@ -9,21 +9,21 @@ import { DadosClinicosModule } from './models/dados-clinicos/dados-clinicos.modu
 import { PlanoAlimentarModule } from './models/plano-alimentar/plano-alimentar.module.js';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { config } from 'process';
-import { SendEmailByPacienteModule } from './models/send-email-by-paciente/send-email-by-paciente.module.js';
 
 @Module({
   imports: [
-    ConfigModule.forRoot(),
+    ConfigModule.forRoot({
+      isGlobal: true,
+    }),
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
       inject: [ConfigService],
       useFactory: (configService: ConfigService) => ({
         type: 'postgres',
-        host: configService.get<string>('DB_HOST'),
-        port: configService.get<number>('DB_PORT'),
-        username: configService.get<string>('DB_USER'),
-        password: configService.get<string>('DB_PASSWORD'),
-        database: configService.get<string>('DB_DATABASE'),
+        url: configService.get<string>('DB_URL'),
+        ssl: {
+          rejectUnauthorized: false,
+        },
         autoLoadEntities: true,
         synchronize: false,
       }),
@@ -33,7 +33,6 @@ import { SendEmailByPacienteModule } from './models/send-email-by-paciente/send-
     PacienteModule,
     DadosClinicosModule,
     PlanoAlimentarModule,
-    SendEmailByPacienteModule,
   ],
   controllers: [AppController],
   providers: [AppService],

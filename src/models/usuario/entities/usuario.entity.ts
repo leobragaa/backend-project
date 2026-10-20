@@ -1,17 +1,12 @@
-import {
-  Column,
-  Entity,
-  JoinColumn,
-  OneToMany,
-  PrimaryGeneratedColumn,
-} from 'typeorm';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { Paciente } from '../../paciente/entities/paciente.entity.js';
 import { PlanoAlimentar } from '../../plano-alimentar/entities/plano-alimentar.entity.js';
+import type { Relation } from 'typeorm';
 
-@Entity('usuario', { schema: 'public', name: 'usuario' })
+@Entity('USUARIO', { schema: 'public', name: 'USUARIO' })
 export class Usuario {
-  @PrimaryGeneratedColumn()
-  id: number;
+  @PrimaryGeneratedColumn('uuid')
+  id: string;
 
   @Column()
   nome: string;
@@ -31,14 +26,15 @@ export class Usuario {
   @Column()
   tipousuario: string;
 
-  @OneToMany(() => Paciente, (paciente) => paciente.id)
-  @JoinColumn({ name: 'id', referencedColumnName: 'paciente_id' })
-  paciente: Paciente;
+  @OneToMany(() => Paciente, (paciente) => paciente.usuario_id)
+  paciente: Relation<Paciente[]>;
+
+  @OneToMany(() => Paciente, (paciente) => paciente.nutricionista_id)
+  pacienteByNutricionista: Relation<Paciente[]>;
 
   @OneToMany(
     () => PlanoAlimentar,
     (planoAlimentar) => planoAlimentar.usuario_id,
   )
-  @JoinColumn({ name: 'id', referencedColumnName: 'usuario_id' })
-  planoAlimentar: PlanoAlimentar;
+  planoAlimentar: Relation<PlanoAlimentar[]>;
 }

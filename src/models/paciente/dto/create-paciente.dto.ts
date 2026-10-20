@@ -1,7 +1,16 @@
-import { IsDate, IsNotEmpty, IsOptional, IsString, Max } from 'class-validator';
+import {
+  IsDateString,
+  IsEmail,
+  IsNotEmpty,
+  IsOptional,
+  IsString,
+  IsUUID,
+  Length,
+} from 'class-validator';
 
 export class CreatePacienteDto {
   @IsString()
+  @IsNotEmpty()
   nome: string;
 
   @IsString()
@@ -15,14 +24,13 @@ export class CreatePacienteDto {
   telefone: string;
 
   @IsString()
-  @IsOptional()
-  tipousuario?: string;
-
-  @IsString()
   sexo: string;
 
-  @IsDate()
+  @IsDateString()
   datanascimento: string;
+
+  @IsString()
+  cep: string;
 
   @IsString()
   endereco: string;
@@ -31,9 +39,6 @@ export class CreatePacienteDto {
   cidade: string;
 
   @IsString()
-  @Max(2)
+  @Length(2, 2)
   estado: string;
-
-  @IsString()
-  cep: string;
 }

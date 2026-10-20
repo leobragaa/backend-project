@@ -36,15 +36,23 @@ export class UsuarioService {
     return this.usuarioRepositorio.find();
   }
 
-  findOne(id: number) {
-    return this.usuarioRepositorio.findOne({ where: { id } });
+  async findOne(id: string) {
+    const usuario = await this.usuarioRepositorio.findOne({
+      where: { id },
+    });
+
+    if (!usuario) {
+      throw new NotFoundException('Usuário não encontrado');
+    }
+
+    return usuario;
   }
 
   findOneEmail(email: string) {
     return this.usuarioRepositorio.findOne({ where: { email } });
   }
 
-  async update(id: number, updateUsuarioDto: UpdateUsuarioDto) {
+  async update(id: string, updateUsuarioDto: UpdateUsuarioDto) {
     const usuario = await this.findOne(id);
 
     if (!usuario) {
@@ -55,7 +63,7 @@ export class UsuarioService {
     return await this.usuarioRepositorio.save(usuario);
   }
 
-  async remove(id: number) {
+  async remove(id: string) {
     const usuario = await this.findOne(id);
 
     if (!usuario) {

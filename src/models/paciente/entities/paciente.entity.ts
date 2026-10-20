@@ -6,38 +6,21 @@ import {
   ManyToOne,
   OneToMany,
   PrimaryGeneratedColumn,
-} from 'typeorm/browser';
+} from 'typeorm';
 import { PlanoAlimentar } from '../../plano-alimentar/entities/plano-alimentar.entity.js';
 import { Usuario } from '../../usuario/entities/usuario.entity.js';
+import type { Relation } from 'typeorm';
 
-@Entity('paciente')
+@Entity('PACIENTE')
 export class Paciente {
-  @PrimaryGeneratedColumn()
-  id: number;
-
-  @Column()
-  nome: string;
-
-  @Column()
-  senha: string;
-
-  @Column()
-  email: string;
-
-  @Column()
-  telefone: string;
-
-  @Column()
-  tipousuario: string;
+  @PrimaryGeneratedColumn('uuid')
+  id: string;
 
   @Column()
   sexo: string;
 
   @Column()
   datanascimento: Date;
-
-  @Column()
-  cpf: string;
 
   @Column()
   endereco: string;
@@ -55,10 +38,13 @@ export class Paciente {
     () => PlanoAlimentar,
     (planoalimentar) => planoalimentar.paciente_id,
   )
-  @JoinColumn({ name: 'paciente_id', referencedColumnName: 'paciente_id' })
-  planoalimentar: PlanoAlimentar;
+  planoalimentar: Relation<PlanoAlimentar>;
 
-  @ManyToOne(() => Usuario, (usuario_id) => usuario_id.id)
+  @ManyToOne(() => Usuario)
+  @JoinColumn({ name: 'nutricionista_id', referencedColumnName: 'id' })
+  nutricionista_id: Relation<Usuario>;
+
+  @ManyToOne(() => Usuario)
   @JoinColumn({ name: 'usuario_id', referencedColumnName: 'id' })
-  usuario_id: Usuario[];
+  usuario_id: Relation<Usuario>;
 }

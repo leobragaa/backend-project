@@ -5,10 +5,11 @@ import {
   ManyToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
+import type { Relation } from 'typeorm';
 import { Paciente } from '../../paciente/entities/paciente.entity.js';
 import { Usuario } from '../../usuario/entities/usuario.entity.js';
 
-@Entity('planoalimentar', { schema: 'public', name: 'planoalimentar' })
+@Entity('PLANOALIMENTAR')
 export class PlanoAlimentar {
   @PrimaryGeneratedColumn()
   id: number;
@@ -27,9 +28,9 @@ export class PlanoAlimentar {
 
   @ManyToOne(() => Paciente, (paciente_id) => paciente_id.planoalimentar)
   @JoinColumn({ name: 'paciente_id', referencedColumnName: 'id' })
-  paciente_id: Paciente[];
+  paciente_id: Relation<Paciente>;
 
   @ManyToOne(() => Usuario, (usuario_id) => usuario_id.planoAlimentar)
   @JoinColumn({ name: 'usuario_id', referencedColumnName: 'id' })
-  usuario_id: Usuario[];
+  usuario_id: Relation<Usuario>;
 }
