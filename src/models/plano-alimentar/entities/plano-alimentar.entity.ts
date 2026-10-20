@@ -12,19 +12,7 @@ import { Usuario } from '../../usuario/entities/usuario.entity.js';
 export class PlanoAlimentar {
   @PrimaryGeneratedColumn()
   id: number;
-
-  @Column()
-  refeicao: string;
-
-  @Column()
-  alimento: string;
-
-  @Column()
-  substuicoes: string;
-
-  @Column()
-  descalimentacao: string;
-
+  
   @ManyToOne(() => Paciente, (paciente_id) => paciente_id.planoalimentar)
   @JoinColumn({ name: 'paciente_id', referencedColumnName: 'id' })
   paciente_id: Paciente[];

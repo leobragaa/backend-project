@@ -12,6 +12,9 @@ import { config } from 'process';
 import { PlanoAlimentarModule } from './models/plano-alimentar/plano-alimentar.module.js';
 import { MessageConversationModule } from './models/message-conversation/message-conversation.module.js';
 import { EmailServiceModule } from './models/email-service/email-service.module.js';
+import { RefeicaoModule } from './models/refeicao/refeicao.module.js';
+import { ItemrefeicaoModule } from './models/itemrefeicao/itemrefeicao.module.js';
+import { AlimentoModule } from './models/alimento/alimento.module.js';
 
 @Module({
   imports: [
@@ -37,6 +40,9 @@ import { EmailServiceModule } from './models/email-service/email-service.module.
     PlanoAlimentarModule,
     MessageConversationModule,
     EmailServiceModule,
+    RefeicaoModule,
+    ItemrefeicaoModule,
+    AlimentoModule,
   ],
   controllers: [AppController],
   providers: [AppService],
