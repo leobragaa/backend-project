@@ -1,15 +1,17 @@
-import { IsNotEmpty, IsString } from 'class-validator';
+// import { IsNotEmpty, IsString } from 'class-validator';
+// import { Usuario } from '../../usuario/entities/usuario.entity.js';
 
-export class sendEmailDto {
-  @IsNotEmpty()
-  recipients: string[];
+// export class sendEmailDto{
+//   @IsNotEmpty()
+//   recipients: string[];
 
-  @IsString()
-  subject: string;
+//   @IsString()
+//   subject: string;
 
-  @IsString()
-  html: string;
+//   @IsString()
+//   html: string;
 
-  @IsString()
-  text?: string;
-}
+//   @IsString()
+//   text?: string;
+
+// }
