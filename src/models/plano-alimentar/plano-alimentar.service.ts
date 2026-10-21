@@ -18,7 +18,20 @@ export class PlanoAlimentarService {
     );
     return await this.planoAlimentarDTO.save(planoAlimentar);
   }
-
+  async searchAllItensPlanoAlimentar(id: number) {
+    const complete_plano = await this.planoAlimentarDTO.findOne({
+      where: { id },
+      relations: {
+        paciente_id: true,
+        refeicao: {
+          itemrefeicao: {
+            alimento_id: true,
+          },
+        },
+      },
+    });
+    return complete_plano;
+  }
   findAll() {
     return this.planoAlimentarDTO.find();
   }

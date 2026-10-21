@@ -6,10 +6,11 @@ import {
   OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
+import type { Relation } from 'typeorm';
 import { PlanoAlimentar } from '../../plano-alimentar/entities/plano-alimentar.entity.js';
 import { Itemrefeicao } from '../../itemrefeicao/entities/itemrefeicao.entity.js';
 
-Entity('refeicao');
+@Entity('refeicao')
 export class Refeicao {
   @PrimaryGeneratedColumn()
   id: number;
@@ -25,11 +26,12 @@ export class Refeicao {
 
   @ManyToOne(
     () => PlanoAlimentar,
-    (plano_alimentar_id) => plano_alimentar_id.id,
+    (plano_alimentar_id) => plano_alimentar_id.refeicao,
   )
   @JoinColumn({ name: 'plano_alimentar_id', referencedColumnName: 'id' })
   plano_alimentar_id: PlanoAlimentar[];
 
-  @OneToMany(() => Itemrefeicao, (itemRefeicao) => itemRefeicao.refeicao_id)
-  itemRefeicao: Itemrefeicao[];
+  @OneToMany(() => Itemrefeicao, (itemrefeicao) => itemrefeicao.refeicao_id)
+  @JoinColumn({ name: 'refeicao_id', referencedColumnName: 'id' })
+  itemrefeicao: Relation<Itemrefeicao[]>;
 }

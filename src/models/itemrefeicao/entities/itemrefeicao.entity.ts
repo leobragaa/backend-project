@@ -2,10 +2,10 @@ import {
   Column,
   Entity,
   JoinColumn,
-  ManyToMany,
   ManyToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
+import type { Relation } from 'typeorm';
 import { Refeicao } from '../../refeicao/entities/refeicao.entity.js';
 import { Alimento } from '../../alimento/entities/alimento.entity.js';
 
@@ -20,11 +20,11 @@ export class Itemrefeicao {
   @Column()
   unidade_item: string;
 
-  @ManyToOne(() => Refeicao, (refeicao_id) => refeicao_id.id)
+  @ManyToOne(() => Refeicao, (refeicao_id) => refeicao_id.itemrefeicao)
   @JoinColumn({ name: 'refeicao_id', referencedColumnName: 'id' })
-  refeicao_id: Refeicao;
+  refeicao_id: Relation<Refeicao>;
 
   @ManyToOne(() => Alimento, (alimento_id) => alimento_id.id)
   @JoinColumn({ name: 'alimento_id', referencedColumnName: 'id' })
-  alimento_id: Alimento;
+  alimento_id: Relation<Alimento>;
 }
