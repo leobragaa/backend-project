@@ -15,6 +15,9 @@ export class PlanoAlimentar {
   @PrimaryGeneratedColumn()
   id: number;
 
+  @Column()
+  data_plano: Date;
+
   @ManyToOne(() => Paciente, (paciente_id) => paciente_id.planoalimentar)
   @JoinColumn({ name: 'paciente_id', referencedColumnName: 'id' })
   paciente_id: Paciente[];
