@@ -1,6 +1,6 @@
-import { IsDateString } from 'class-validator';
+import { IsString } from 'class-validator';
 
 export class CreatePlanoAlimentarDto {
-  @IsDateString()
-  data_plano: Date;
+  @IsString()
+  data_plano: string;
 }

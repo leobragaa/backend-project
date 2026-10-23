@@ -16,7 +16,7 @@ export class PlanoAlimentar {
   id: number;
 
   @Column()
-  data_plano: Date;
+  data_plano: string;
 
   @ManyToOne(() => Paciente, (paciente_id) => paciente_id.planoalimentar)
   @JoinColumn({ name: 'paciente_id', referencedColumnName: 'id' })

@@ -19,7 +19,7 @@ export class Refeicao {
   refeicao_nome: string;
 
   @Column()
-  horario_refeicao: Date;
+  horario_refeicao: string;
 
   @Column()
   ordem_refeicao: number;
