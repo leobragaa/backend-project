@@ -5,7 +5,7 @@ export class CreateRefeicaoDto {
   refeicao_nome: string;
 
   @IsDateString()
-  horario_refeicao: Date;
+  horario_refeicao: string;
 
   @IsNumber()
   ordem_refeicao: number;
