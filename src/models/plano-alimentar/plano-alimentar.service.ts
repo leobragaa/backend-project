@@ -18,20 +18,33 @@ export class PlanoAlimentarService {
     );
     return await this.planoAlimentarDTO.save(planoAlimentar);
   }
-
+  async searchAllItensPlanoAlimentar(id: string) {
+    const complete_plano = await this.planoAlimentarDTO.findOne({
+      where: { id },
+      relations: {
+        paciente_id: true,
+        refeicao: {
+          itemrefeicao: {
+            alimento_id: true,
+          },
+        },
+      },
+    });
+    return complete_plano;
+  }
   findAll() {
     return this.planoAlimentarDTO.find();
   }
 
-  findOne(id: number) {
+  findOne(id: string) {
     return this.planoAlimentarDTO.findOne({ where: { id } });
   }
 
-  update(id: number, updatePlanoAlimentarDto: UpdatePlanoAlimentarDto) {
+  update(id: string, updatePlanoAlimentarDto: UpdatePlanoAlimentarDto) {
     return this.planoAlimentarDTO.update(+id, updatePlanoAlimentarDto);
   }
 
-  remove(id: number) {
+  remove(id: string) {
     return `This action removes a #${id} planoAlimentar`;
   }
 }

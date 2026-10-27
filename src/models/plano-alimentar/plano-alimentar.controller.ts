@@ -6,6 +6,7 @@ import {
   Patch,
   Param,
   Delete,
+  ParseIntPipe,
 } from '@nestjs/common';
 import { PlanoAlimentarService } from './plano-alimentar.service.js';
 import { CreatePlanoAlimentarDto } from './dto/create-plano-alimentar.dto.js';
@@ -27,7 +28,11 @@ export class PlanoAlimentarController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.planoAlimentarService.findOne(+id);
+    return this.planoAlimentarService.findOne(id);
+  }
+  @Get(':id/completo')
+  searchAllItensPlanoAlimentar(@Param('id') id: string) {
+    return this.planoAlimentarService.searchAllItensPlanoAlimentar(id);
   }
 
   @Patch(':id')
@@ -35,11 +40,11 @@ export class PlanoAlimentarController {
     @Param('id') id: string,
     @Body() updatePlanoAlimentarDto: UpdatePlanoAlimentarDto,
   ) {
-    return this.planoAlimentarService.update(+id, updatePlanoAlimentarDto);
+    return this.planoAlimentarService.update(id, updatePlanoAlimentarDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.planoAlimentarService.remove(+id);
+    return this.planoAlimentarService.remove(id);
   }
 }

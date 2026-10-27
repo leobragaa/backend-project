@@ -9,6 +9,10 @@ import { DadosClinicosModule } from './models/dados-clinicos/dados-clinicos.modu
 import { PlanoAlimentarModule } from './models/plano-alimentar/plano-alimentar.module.js';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { config } from 'process';
+import { MessageConversationModule } from './models/message-conversation/message-conversation.module.js';
+import { AlimentoModule } from './models/alimento/alimento.module.js';
+import { ItemrefeicaoModule } from './models/itemrefeicao/itemrefeicao.module.js';
+import { RefeicaoModule } from './models/refeicao/refeicao.module.js';
 
 @Module({
   imports: [
@@ -33,6 +37,10 @@ import { config } from 'process';
     PacienteModule,
     DadosClinicosModule,
     PlanoAlimentarModule,
+    MessageConversationModule,
+    RefeicaoModule,
+    ItemrefeicaoModule,
+    AlimentoModule,
   ],
   controllers: [AppController],
   providers: [AppService],
