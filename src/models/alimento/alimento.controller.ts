@@ -12,7 +12,7 @@ import { CreateAlimentoDto } from './dto/create-alimento.dto.js';
 import { UpdateAlimentoDto } from './dto/update-alimento.dto.js';
 import { InjectRepository } from '@nestjs/typeorm';
 
-@Controller('alimento')
+@Controller('ALIMENTO')
 export class AlimentoController {
   constructor(private readonly alimentoService: AlimentoService) {}
 

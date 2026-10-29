@@ -6,7 +6,7 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { Paciente } from '../../paciente/entities/paciente.entity.js';
-@Entity('DADOSCLINICOS')
+@Entity('DADOCLINICO')
 export class DadosClinico {
   @PrimaryGeneratedColumn()
   id: number;

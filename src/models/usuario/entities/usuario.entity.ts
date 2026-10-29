@@ -34,7 +34,7 @@ export class Usuario {
 
   @OneToMany(
     () => PlanoAlimentar,
-    (planoAlimentar) => planoAlimentar.usuario_id,
+    (planoAlimentar) => planoAlimentar.nutricionista_id,
   )
   planoAlimentar: Relation<PlanoAlimentar[]>;
 }

@@ -38,7 +38,7 @@ export class Paciente {
     () => PlanoAlimentar,
     (planoalimentar) => planoalimentar.paciente_id,
   )
-  planoalimentar: Relation<PlanoAlimentar>;
+  planoalimentar: Relation<PlanoAlimentar[]>;
 
   @ManyToOne(() => Usuario)
   @JoinColumn({ name: 'nutricionista_id', referencedColumnName: 'id' })

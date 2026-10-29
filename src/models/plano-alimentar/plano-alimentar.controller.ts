@@ -6,13 +6,12 @@ import {
   Patch,
   Param,
   Delete,
-  ParseIntPipe,
 } from '@nestjs/common';
 import { PlanoAlimentarService } from './plano-alimentar.service.js';
 import { CreatePlanoAlimentarDto } from './dto/create-plano-alimentar.dto.js';
 import { UpdatePlanoAlimentarDto } from './dto/update-plano-alimentar.dto.js';
 
-@Controller('PLANO-ALIMENTAR')
+@Controller('PLANOALIMENTAR')
 export class PlanoAlimentarController {
   constructor(private readonly planoAlimentarService: PlanoAlimentarService) {}
 

@@ -5,11 +5,19 @@ import { UsuarioService } from '../models/usuario/usuario.service.js';
 export class AuthService {
   constructor(private readonly usuarioService: UsuarioService) {}
 
-  async signIn(email: string, password: string): Promise<any> {
+  async signIn(
+    email: string,
+    password: string,
+    tipousuario: string,
+  ): Promise<any> {
     const usuario = await this.usuarioService.findOneEmail(email);
 
-    if (usuario?.senha !== password) {
-      throw new UnauthorizedException();
+    if (
+      !usuario ||
+      usuario?.senha !== password ||
+      usuario.tipousuario !== tipousuario
+    ) {
+      throw new UnauthorizedException('Email ou senha invalidos');
     }
 
     const { senha, ...result } = usuario;

@@ -3,7 +3,7 @@ import { ItemrefeicaoService } from './itemrefeicao.service.js';
 import { CreateItemrefeicaoDto } from './dto/create-itemrefeicao.dto.js';
 import { UpdateItemrefeicaoDto } from './dto/update-itemrefeicao.dto.js';
 
-@Controller('itemrefeicao')
+@Controller('ITEMREFEICAO')
 export class ItemrefeicaoController {
   constructor(private readonly itemrefeicaoService: ItemrefeicaoService) {}
 

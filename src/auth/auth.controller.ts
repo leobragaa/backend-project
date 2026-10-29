@@ -16,7 +16,11 @@ export class AuthController {
     console.log(credenciais);
 
     if (credenciais) {
-      return this.authService.signIn(credenciais.email, credenciais.senha);
+      return this.authService.signIn(
+        credenciais.email,
+        credenciais.senha,
+        credenciais.tipousuario,
+      );
     }
 
     throw new BadRequestException();

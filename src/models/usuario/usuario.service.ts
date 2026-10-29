@@ -48,7 +48,7 @@ export class UsuarioService {
     return usuario;
   }
 
-  findOneEmail(email: string) {
+  async findOneEmail(email: string) {
     return this.usuarioRepositorio.findOne({ where: { email } });
   }
 
