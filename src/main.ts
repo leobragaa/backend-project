@@ -7,7 +7,7 @@ async function bootstrap() {
   console.log('http://localhost:3333/');
 
   app.enableCors({
-    origin: 'http://localhost:3000/',
+    origin: ['http://localhost:3000/', 'https://nutriflow10.vercel.app/'],
     allowedHeaders:
       'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept, Observe, Authorization',
     methods: 'GET,PUT,POST,DELETE,PATCH',
