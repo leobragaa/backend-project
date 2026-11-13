@@ -28,15 +28,15 @@ export class PacienteController {
   findAll() {
     return this.pacienteService.findAll();
   }
+  @Get('nutricionista')
+  findByNutricionista(@Query('id_nutricionista') id_nutricionista: string) {
+    return this.pacienteService.findByNutricionista(id_nutricionista);
+  }
 
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.pacienteService.findOne(id);
   }
-  // @Get('nutricionista')
-  // findByNutricionista(@Query('id_nutricionista') id_nutricionista: string) {
-  // return this.pacienteService.findByNutricionista(id_nutricionista);
-  // }
   @Patch(':id')
   update(
     @Param('id') id: string,

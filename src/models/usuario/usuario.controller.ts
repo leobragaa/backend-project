@@ -6,7 +6,6 @@ import {
   Patch,
   Param,
   Delete,
-  Query,
 } from '@nestjs/common';
 import { UsuarioService } from './usuario.service.js';
 import { CreateUsuarioDto } from './dto/create-usuario.dto.js';
@@ -29,7 +28,7 @@ export class UsuarioController {
   }
 
   @Get(':id')
-  findOne(@Query('id') id: string) {
+  findOne(@Param('id') id: string) {
     return this.usuarioService.findOne(id);
   }
 

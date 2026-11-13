@@ -1,9 +1,14 @@
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { UsuarioService } from '../models/usuario/usuario.service.js';
 
+import { JwtService } from '@nestjs/jwt';
+
 @Injectable()
 export class AuthService {
-  constructor(private readonly usuarioService: UsuarioService) {}
+  constructor(
+    private readonly usuarioService: UsuarioService,
+    private readonly jwtService: JwtService,
+  ) {}
 
   async signIn(
     email: string,
@@ -20,8 +25,20 @@ export class AuthService {
       throw new UnauthorizedException('Email ou senha invalidos');
     }
 
-    const { senha, ...result } = usuario;
+    const payload = {
+      sub: usuario.id,
+      nome: usuario.nome,
+      email: usuario.email,
+      tipousuario: usuario.tipousuario,
+    };
 
-    return result;
+    const access_token = await this.jwtService.signAsync(payload);
+
+    const { senha, ...dadosUsuario } = usuario;
+
+    return {
+      access_token,
+      usuario: dadosUsuario,
+    };
   }
 }

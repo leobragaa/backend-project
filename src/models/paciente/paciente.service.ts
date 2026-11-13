@@ -47,6 +47,7 @@ export class PacienteService {
       },
       relations: {
         nutricionista_id: true,
+        usuario_id: true,
       },
     });
   }
