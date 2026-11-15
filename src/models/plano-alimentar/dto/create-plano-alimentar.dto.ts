@@ -1,6 +1,12 @@
-import { IsString } from 'class-validator';
+import { IsDateString, IsString, IsUUID } from 'class-validator';
 
 export class CreatePlanoAlimentarDto {
-  @IsString()
-  data_plano: string;
+  @IsDateString()
+  data_plano: Date;
+
+  @IsUUID()
+  paciente_id: string;
+
+  @IsUUID()
+  nutricionista_id: string;
 }

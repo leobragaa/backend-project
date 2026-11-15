@@ -6,6 +6,7 @@ import {
   Patch,
   Param,
   Delete,
+  Query,
 } from '@nestjs/common';
 import { PlanoAlimentarService } from './plano-alimentar.service.js';
 import { CreatePlanoAlimentarDto } from './dto/create-plano-alimentar.dto.js';
@@ -24,7 +25,10 @@ export class PlanoAlimentarController {
   findAll() {
     return this.planoAlimentarService.findAll();
   }
-
+  @Get('nutricionista')
+  findByNutricionista(@Query('id_nutricionista') id: string) {
+    return this.planoAlimentarService.findByNutricionista(id);
+  }
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.planoAlimentarService.findOne(id);

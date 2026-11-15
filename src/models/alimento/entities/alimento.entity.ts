@@ -1,4 +1,6 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Itemrefeicao } from '../../itemrefeicao/entities/itemrefeicao.entity.js';
+import type { Relation } from 'typeorm';
 
 @Entity('ALIMENTO')
 export class Alimento {
@@ -12,11 +14,14 @@ export class Alimento {
   descricao_alimento: string;
 
   @Column()
-  calorias_alimento: number;
+  calorias_alimentos: number;
 
   @Column()
   proteina_alimento: number;
 
   @Column()
-  carboidrato_alimento: number;
+  carboidratos_alimento: number;
+
+  @OneToMany(() => Itemrefeicao, (itemrefeicao) => itemrefeicao.alimento_id)
+  itemrefeicao: Relation<Itemrefeicao[]>;
 }

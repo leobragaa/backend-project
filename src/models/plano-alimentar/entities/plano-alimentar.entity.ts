@@ -19,15 +19,14 @@ export class PlanoAlimentar {
   @Column()
   data_plano: string;
 
-  @ManyToOne(() => Paciente, (paciente_id) => paciente_id.planoalimentar)
+  @ManyToOne(() => Paciente, (paciente) => paciente.planoalimentar)
   @JoinColumn({ name: 'paciente_id', referencedColumnName: 'id' })
   paciente_id: Relation<Paciente>;
 
-  @ManyToOne(() => Usuario, (usuario_id) => usuario_id.planoAlimentar)
+  @ManyToOne(() => Usuario, (usuario) => usuario.planoAlimentar)
   @JoinColumn({ name: 'nutricionista_id', referencedColumnName: 'id' })
-  nutricionista_id: Relation<Usuario[]>;
+  nutricionista_id: Relation<Usuario>;
 
   @OneToMany(() => Refeicao, (refeicao) => refeicao.plano_alimentar_id)
-  @JoinColumn({ name: 'plano_alimentar_id', referencedColumnName: 'id' })
   refeicao: Relation<Refeicao[]>;
 }

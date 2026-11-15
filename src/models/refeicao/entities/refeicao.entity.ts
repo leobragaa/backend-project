@@ -18,7 +18,7 @@ export class Refeicao {
   @Column()
   refeicao_nome: string;
 
-  @Column()
+  @Column({ type: 'time' })
   horario_refeicao: string;
 
   @Column()
@@ -29,7 +29,7 @@ export class Refeicao {
     (plano_alimentar_id) => plano_alimentar_id.refeicao,
   )
   @JoinColumn({ name: 'plano_alimentar_id', referencedColumnName: 'id' })
-  plano_alimentar_id: PlanoAlimentar[];
+  plano_alimentar_id: Relation<PlanoAlimentar>;
 
   @OneToMany(() => Itemrefeicao, (itemrefeicao) => itemrefeicao.refeicao_id)
   @JoinColumn({ name: 'refeicao_id', referencedColumnName: 'id' })
